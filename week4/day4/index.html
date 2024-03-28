@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+
+const sampleNews = `As software developers, the natural tendency is to start developing applications based on your own hands-on experience and knowledge right away. However, overtime issues in the application arise, adaptations to changes, and new features happen.`
+
+let bosluq = 0
+let vergul= 0
+let noqte = 0
+
+for (let i = 0; i < sampleNews.length; i++) {
+    if(sampleNews[i]==' ')  {
+        bosluq++;
+    } 
+    if(sampleNews[i] == ","){
+        vergul++;
+    }
+    if(sampleNews[i] == "."){
+        noqte++
+    }
+}
+console.log("bosluqlarin sayi: " + bosluq);
+console.log("vergullerin sayi: " + vergul);
+console.log("noqtelerin sayi: " + noqte);
+    </script>
+</body>
+</html>
