@@ -32,6 +32,46 @@
 
 // console.log("Deyisdirilmis array: ",arr);
 
+
+//taks11111
+const arr=[23,5,1,3,12,4,9,81,7,11,22,31,6]
+function checkEven(arr) {
+    let maxEven=0;
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i]%2==0 && arr[i]>maxEven) {
+            maxEven=arr[i]
+        }
+    }
+    return maxEven
+}
+function checkOdd(arr) {
+    let minOdd=arr[0]
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i]!=0 && arr[i]<minOdd) {
+            minOdd=arr[i]
+        } 
+    }
+    return minOdd
+}
+// console.log(checkEven(arr));
+// console.log(checkOdd(arr));
+// arr[arr.indexOf(checkEven(arr))]=checkOdd(arr)
+// arr[arr.indexOf(checkOdd(arr))]=checkEven(arr)
+// console.log(arr);
+let maxEven = checkEven(arr)
+let minOdd = checkOdd(arr)
+// console.log(maxEven);
+// console.log(minOdd);
+
+console.log("Evvelki array:",arr);
+// console.log(arr.indexOf(maxEven))
+// console.log(arr.indexOf(minOdd))
+
+arr[arr.indexOf(maxEven)] = minOdd 
+arr[arr.indexOf(minOdd)] = maxEven
+
+console.log("Deyisdirilmis array: ",arr);
+
 //task2
 // var arr = [
 //   { urunAdi: "Beyaz Ekmek", fiyat: 2.5, stok: 100, kategori: "Ekmek" },
@@ -91,13 +131,10 @@
 //     meyveVeSebzeler.push(arr[i])
 // }
 
-// for (let i = 0; i < meyveVeSebzeler.length; i++) {
-//     console.log(meyveVeSebzeler[i]);
-
-// }
+// return meyveVeSebzeler
 // }
 
-// showMeyveAndSebze(arr)
+// console.log(showMeyveAndSebze(arr));
 
 //task4
 
@@ -122,15 +159,10 @@
 //     meyveVeSebzeler.push(arr[i])
 // }
 
-// // for (let i = 0; i < meyveVeSebzeler.length; i++) {
-// //     console.log(meyveVeSebzeler[i]);
 
-// // }
-
-// // daha seliqeli gorsensin deye
 // return meyveVeSebzeler
 // }
-// // showMeyveAndSebze(arr)
+
 // console.log(showMeyveAndSebze(arr));
 
 //task5

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: blueviolet;
+            height: 625px;
+        }
+        .oyuncontainer{
+            display: flex;
+            gap: 20px;
+        }
+        .oyuncontainer img{
+            width: 200px;
+            height: 200px;
+        }
+        .secimcss{
+            font-size: 30px;
+            color: rgb(255, 255, 255);
+            background-color: black;
+        }
+        #cavab{
+            font-size: 30px;
+            color: rgb(220, 56, 56);
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    
+
+    <div class="container">
+        <h1 class="secimcss">Secimizi edin:</h1>
+        <div class="oyuncontainer">
+        <button id="tas"><img src="https://aysesenafeyiz.github.io/ileriProgramlama/HW3/tas.png" alt=""></button>
+        <button id="kagit"><img src="https://aysesenafeyiz.github.io/ileriProgramlama/HW3/kagit.png" alt=""></button>
+        <button id="makas"><img src="https://aysesenafeyiz.github.io/ileriProgramlama/HW3/makas.png" alt=""></button>
+        </div>
+        
+        <p id="komp_secimi" class="secimcss">Komputerin secimi :</p>
+        <div id="cavab"></div>
+
+    </div>
+    <script>
+        const tas = document.getElementById("tas")
+        const kagit = document.getElementById("kagit")
+        const makas = document.getElementById("makas")
+
+        function istifadeciSecimi(mySecim) {
+            const secimler = ["tas","kagit","makas"]
+            const komp_secimi = secimler[Math.floor(Math.random()*3)]
+
+            document.getElementById("komp_secimi").textContent = "Komputerin secimi :" + komp_secimi
+
+            if(mySecim == komp_secimi){
+                document.getElementById("cavab").textContent = "Beraber!"
+            }
+            else if(
+                (mySecim === "tas" && komp_secimi === "makas")||
+                (mySecim === "kagit" && komp_secimi === "tas")||
+                (mySecim === "makas" && komp_secimi === "kagit")
+            ){
+                document.getElementById("cavab").textContent = "Tebrikler qazandiniz"
+            }
+            else{
+                document.getElementById("cavab").textContent = "Uduzdunuz"
+            }
+        }
+
+        tas.onclick = function () {
+            istifadeciSecimi("tas")
+        }
+        kagit.onclick = function () {
+            istifadeciSecimi("kagit")
+        }
+        makas.onclick = function () {
+            istifadeciSecimi("makas")
+        }
+       
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <h1>Tas Kagit Makas Oyunu</h1>
+    <p style="font-size: 30px;">Seciminizi edin:</p>
+    <div id="secimler">
+        <img src="https://aysesenafeyiz.github.io/ileriProgramlama/HW3/kagit.png" id="kagit" width="200" height="200" data-id="0">
+        <img src="https://aysesenafeyiz.github.io/ileriProgramlama/HW3/makas.png" id="makas" width="200" height="200" data-id="1">
+        <img src="https://aysesenafeyiz.github.io/ileriProgramlama/HW3/tas.png" id="tas" width="200" height="200" data-id="2">
+        </div> 
+        <p style="font-size: 30px;">Komputerin secimi</p>
+        <div id="komputerin_cavabi">
+        <img src="https://www.sefaerkus.com/wp-content/uploads/2019/07/tas-kagit-makas.jpg.webp" id="komputerin_secimi" width="200" height="200" alt="komputerin secimi">
+        </div>
+        <div id="cavab">
+         
+        </div>
+    </div>
+    <script>
+        let secimler=["https://aysesenafeyiz.github.io/ileriProgramlama/HW3/kagit.png","https://aysesenafeyiz.github.io/ileriProgramlama/HW3/makas.png","https://aysesenafeyiz.github.io/ileriProgramlama/HW3/tas.png"];
+let kagit=document.getElementById("kagit");
+let makas=document.getElementById("makas");
+let tas=document.getElementById("tas");
+let kompSecim=document.getElementById("komputerin_secimi");
+let cavabYazdir=document.getElementById("cavab");
+ 
+ 
+kagit.onclick=secimEt;
+makas.onclick=secimEt;
+tas.onclick=secimEt;
+ 
+ 
+function secimEt(){
+let pc= randomSecim();
+ 
+/*dizi sıralamasını kullanmak daha mantıklıydı fakat yukarıdaki resimlerin sıralamsı değişince hata verecektir.*/
+/*bu karşılaştırmada da rsimlerin isimlerine dikkat etmek gerekiyor.*/
+let secim= this.dataset.id;
+if(pc==0 && secim==0)
+{
+cavab="ikinizde eyni secimi ettiniz";
+}
+else if(pc==0 && secim==1)
+{
+cavab="Qazandin, makas kagiti keser";
+}
+else if(pc==0 && secim==2)
+{
+cavab="Uduzdun, kagit tasi ezer";
+}
+else if(pc==1 && secim==0)
+{
+cavab="Uduzdun, makas kagiti keser";
+}
+else if(pc==1 && secim==1)
+{
+cavab="ikinizde eyni secimi ettiniz";
+}
+else if(pc==1 && secim==2)
+{
+cavab="Qazandin, tas makasi qirar";
+}
+else if(pc==2 && secim==0)
+{
+cavab="Qazandin, kagit tasi ezer";
+}
+else if(pc==2 && secim==1)
+{
+cavab="Uduzdun, tas makasi qirar";
+}
+else if(pc==2 && secim==2)
+{
+cavab="ikinizde eyni secimi ettiniz";
+}
+ 
+cavabYazdir.innerHTML=cavab;
+}
+ 
+function randomSecim(){
+let sayi= Math.round(Math.random()*2);
+kompSecim.src=secimler[sayi]; 
+ 
+return sayi;
+}
+    </script>
+</body>
+</html>
