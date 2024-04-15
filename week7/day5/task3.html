@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .card_main {
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+            margin-top: 10px;
+        }
+
+        .card_body {
+            width: 200px;
+            height: 100px;
+            border: 1px solid black;
+
+        }
+    </style>
+</head>
+
+<body>
+    <form action="">
+        <input type="text" name="" id="inp1">
+        <input type="text" name="" id="inp2">
+
+        <button id="btn">add</button>
+    </form>
+
+    <div class="card_main">
+
+
+    </div>
+    <div class="card_body"></div>
+    </div>
+
+    <script>
+        const inp1 = document.getElementById("inp1")
+        const inp2 = document.getElementById("inp2")
+        const btn = document.getElementById("btn")
+        const card_main = document.querySelector(".card_main")
+        const card_body = document.querySelector(".card_body")
+
+        let arr = localStorage.getItem("key") ? JSON.parse(localStorage.getItem("key")) : []
+
+      
+arr.forEach(x => {
+    inp1.value = x[0]
+        inp2.value = x[1]
+    card_main.innerHTML += `<p>${x[0]}<p>`
+    card_body.innerHTML += `<p>${x[1]}<p>`
+
+});
+     
+        btn.addEventListener("click", function (e) {
+            arr.push([inp1.value, inp2.value])
+            e.preventDefault()
+            localStorage.setItem("key", JSON.stringify(arr))
+
+            card_main.textContent += `${inp1.value}`
+            card_body.textContent += `${inp2.value}`
+
+        })
+    </script>
+    
+</body>
+
+</html>
