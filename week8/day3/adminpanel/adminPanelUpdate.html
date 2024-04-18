@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>update pag</h1>
+  <div class="admin_add_container">
+    <form action="">
+      <input type="text" name="" id="img_url_admin" />
+      <input type="text" name="" id="name_admin" placeholder="Name" />
+      <input type="text" name="" id="job_admin" placeholder="Job" />
+      <button class="btn_admin">edit User</button>
+    </form>
+  </div>
+  <script>
+    const hash = document.location.hash.slice(1);
+    const img_url_admin = document.getElementById("img_url_admin");
+    const name_admin = document.getElementById("name_admin");
+    const job_admin = document.getElementById("job_admin");
+    const btn_admin = document.querySelector(".btn_admin");
+
+    async function getProductsById(id) {
+      const res = await fetch("http://localhost:3000/users/" + id);
+      const data = res.json();
+      return data;
+    }
+
+    async function fillFrom() {
+      const data = await getProductsById(hash);
+      name_admin.value = data.name;
+      job_admin.value = data.job;
+      img_url_admin.value = data.img_url;
+    }
+    
+    fillFrom();
+    btn_admin.addEventListener("click", async function () {
+      updateUser(hash);
+    });
+
+    async function updateUser(id) {
+      const res = await fetch("http://localhost:3000/users/" + id, {
+        method: "put",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          img_url: img_url_admin.value,
+          name: name_admin.value,
+          job: job_admin.value,
+        }),
+
+      });
+
+      const data = await res.json();
+      window.location.href = "./adminPanel.html"
+    }
+  </script>
+</body>
+
+</html>
